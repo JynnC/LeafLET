@@ -1,0 +1,87 @@
+@import url('./admin-user-profile.css');
+
+.profile-menu-item.active {
+  background: #C7E6AB;
+  color: #1E3D07;
+  border-color: #C7E6AB;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 44px 10px 12px;
+  border: 1px solid #d9e5d0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.2s ease;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(63, 125, 31, 0.1);
+}
+
+.input-icon-placeholder {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.password-requirements {
+  padding: 0;
+  margin: 0;
+}
+
+.password-requirements p {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.password-requirements ul {
+  margin: 0;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 6px 20px;
+  color: var(--text);
+}
+
+.password-requirements li {
+  list-style: none;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1E3D07;
+  display: inline-block;
+}
+
+.profile-menu-icon.placeholder-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.btn {
+  font-weight: 700;
+}

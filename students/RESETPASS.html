@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LeafLET Reset Password</title>
+
+  <!-- POPPINS FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#1d1d1d;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* PHONE CONTAINER */
+    .phone{
+      width:320px;
+      height:640px;
+      background:#f5f5ee;
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 0 20px rgba(0,0,0,0.25);
+    }
+
+    /* MAIN CONTENT */
+    .content{
+      padding:40px 18px 90px;
+      text-align:center;
+    }
+
+    /* LOGO */
+    .logo{
+      width:90px;
+      display:block;
+      margin:30px auto 20px;
+    }
+
+    /* TITLE */
+    h2{
+      font-size:16px;
+      color:#4B7A1F;
+      font-weight:600;
+      margin-bottom:8px;
+    }
+
+    /* DESCRIPTION */
+    .description{
+      font-size:12px;
+      color:#555;
+      line-height:1.5;
+      margin-bottom:20px;
+      padding:0 8px;
+    }
+
+    /* INPUT */
+    .input-box{
+      width:100%;
+      height:40px;
+      border:1px solid #cfd3c2;
+      border-radius:6px;
+      padding:0 12px;
+      font-size:12px;
+      outline:none;
+      margin-bottom:16px;
+      background:#fff;
+    }
+
+    .input-box:focus{
+      border-color:#4B7A1F;
+    }
+
+    /* INFO TEXT */
+    .info-text{
+      font-size:12px;
+      color:#555;
+      line-height:1.5;
+      margin-bottom:20px;
+      text-align:left;
+    }
+
+    /* BUTTON */
+    .btn{
+      width:100%;
+      height:42px;
+      border:none;
+      border-radius:6px;
+      background:#4B7A1F;
+      color:#fff;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#3d6618;
+    }
+
+    /* BOTTOM TEXT */
+    .bottom-text{
+      margin-top:14px;
+      font-size:12px;
+      color:#555;
+      text-align:left;
+    }
+
+    .bottom-text a{
+      color:#4B7A1F;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    /* NAVIGATION BAR */
+    .nav{
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      height:60px;
+      background:#1E3D07;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      padding:0 10px;
+    }
+
+    /* NAV ICONS */
+    .nav img{
+      width:20px;
+      height:20px;
+      object-fit:contain;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .nav img:hover{
+      transform:scale(1.08);
+    }
+
+
+    .task-icon{
+    width: 33px !important;
+    height:33px !important;
+}
+
+.game-icon{
+  width:70px !important;
+  height:70px !important;
+  margin-top:-24px;
+}
+
+    .profile-icon,
+    .files-icon{
+      width:24px !important;
+      height:20px !important;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE SCREEN -->
+  <div class="phone">
+
+    <div class="content">
+      <img src="logo.png" class="logo" alt="LeafLET Logo">
+      <h2>Forgot your password?</h2>
+      <p class="description">
+        Enter your email address to reset your password.
+      </p>
+
+      <input
+        type="email"
+        class="input-box"
+        placeholder="Enter your email address">
+
+      <p class="info-text">
+        If your email is registered, you will receive an
+        email containing the reset password link.
+      </p>
+
+      <button class="btn">Send reset link</button>
+
+      <div class="bottom-text">
+        Remember your password?
+        <a href="#">Back to login</a>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM NAVIGATION -->
+    <div class="nav">
+
+      <img src="home.png" alt="Home Icon">
+
+      <img src="tasks.png"
+        class="task-icon"
+        alt="Tasks Icon">
+
+      <img src="game.png"
+        class="game-icon"
+        alt="Game Icon">
+
+      <img src="files.png"
+        class="files-icon"
+        alt="Files Icon">
+
+      <img src="profile.png"
+        class="profile-icon"
+        alt="Profile Icon">
+
+    </div>
+
+  </div>
+
+</body>
+</html>

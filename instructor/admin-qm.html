@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafLET Question Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/admin-qm.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="./images/LOGO1.png" alt="LeafLET logo"/>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item" href="admin-dashboard.html">
+          <span class="icon"><img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/house-door-fill.svg" alt="" aria-hidden="true" /></span>
+          <span class="label">Dashboard</span>
+        </a>
+        <a class="menu-item active" href="admin-qm.html">
+          <span class="icon"><img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/question-circle-fill.svg" alt="" aria-hidden="true" /></span>
+          <span class="label">Questions</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon"><img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/folder-fill.svg" alt="" aria-hidden="true" /></span>
+          <span class="label">Categories</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon"><img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/mortarboard-fill.svg" alt="" aria-hidden="true" /></span>
+          <span class="label">Students</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Question Management</h1>
+        <div class="profile-chip">
+          <div class="profile-meta">
+            <strong></strong>
+            <small></small>
+          </div>
+          <div class="avatar" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <section class="qm-layout">
+        <aside class="left-panel">
+          <div class="left-head">
+            <span>QUESTION (<span id="questionCount">0</span>)</span>
+            <button type="button" id="addQuestionBtn" class="icon-btn" title="Add question">
+              <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/plus-circle-fill.svg" alt="" aria-hidden="true" />
+            </button>
+          </div>
+          <ul id="questionList" class="question-list"></ul>
+        </aside>
+
+        <section class="right-panel">
+          <div class="setup-card">
+            <h2>Classification &amp; Setup</h2>
+            <div class="setup-grid">
+              <label class="field">
+                <span>Category</span>
+                <select id="categorySelect">
+                  <option value="gened">General Education</option>
+                  <option value="profed">Professional Education</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Topic</span>
+                <select id="topicSelect"></select>
+              </label>
+            </div>
+            <div class="setup-actions">
+              <button type="button" class="btn">Preview</button>
+              <button type="button" id="publishBtn" class="btn btn-primary">Publish</button>
+            </div>
+            <div id="publishStatus" class="publish-status" aria-live="polite"></div>
+          </div>
+
+          <div class="editor-card">
+            <div class="editor-top">
+              <label class="field compact">
+                <span>Question Type</span>
+                <select id="typeSelect">
+                  <option value="multiple_choice">Multiple Choice</option>
+                  <option value="identification">Identification</option>
+                  <option value="enumeration">Enumeration</option>
+                </select>
+              </label>
+              <label class="switch-wrap">
+                <span>Required</span>
+                <input id="requiredToggle" type="checkbox" checked />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Question</span>
+              <textarea id="questionText" rows="4" placeholder="Write your question here..."></textarea>
+            </label>
+
+            <div class="choice-head">
+              <h3>Choices</h3>
+              <label class="switch-wrap">
+                <span>Multiple Answer</span>
+                <input id="multiAnswerToggle" type="checkbox" />
+              </label>
+            </div>
+
+            <ul id="choicesList" class="choices-list"></ul>
+            <button type="button" id="addChoiceBtn" class="add-answer-btn">+ Add Answer</button>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "leaflet_qm_frontend_state";
+    const DATABASE_KEY = "leaflet_qm_database";
+    const refs = {
+      questionCount: document.getElementById("questionCount"),
+      questionList: document.getElementById("questionList"),
+      addQuestionBtn: document.getElementById("addQuestionBtn"),
+      categorySelect: document.getElementById("categorySelect"),
+      topicSelect: document.getElementById("topicSelect"),
+      typeSelect: document.getElementById("typeSelect"),
+      requiredToggle: document.getElementById("requiredToggle"),
+      questionText: document.getElementById("questionText"),
+      multiAnswerToggle: document.getElementById("multiAnswerToggle"),
+      choicesList: document.getElementById("choicesList"),
+      addChoiceBtn: document.getElementById("addChoiceBtn"),
+      publishBtn: document.getElementById("publishBtn"),
+      publishStatus: document.getElementById("publishStatus")
+    };
+
+    const topicData = {
+      gened: [
+        "English",
+        "Mathematics",
+        "Social Studies",
+        "Physical Ed.",
+        "Science",
+        "TVT Ed",
+        "Elementary Ed",
+        "Secondary Ed",
+        "TLE Ed"
+      ],
+      profed: [
+        "Child and Adolescent Development",
+        "Principles of Teaching",
+        "Curriculum Development",
+        "Assessment of Learning",
+        "The Teaching Profession"
+      ]
+    };
+
+    let state = { questions: [], selectedId: null };
+
+    function uid() {
+      return Math.random().toString(36).slice(2, 10);
+    }
+
+    function defaultQuestion() {
+      return {
+        id: uid(),
+        title: "",
+        category: "gened",
+        topic: topicData.gened[0],
+        type: "multiple_choice",
+        required: true,
+        multipleAnswer: false,
+        choices: [
+          { id: uid(), text: "", correct: false },
+          { id: uid(), text: "", correct: false }
+        ]
+      };
+    }
+
+    function selectedQuestion() {
+      return state.questions.find((q) => q.id === state.selectedId) || null;
+    }
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function load() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed.questions)) {
+          state.questions = parsed.questions;
+          state.selectedId = parsed.selectedId || null;
+        }
+      } catch (error) {
+        console.error("Failed to load state:", error);
+      }
+    }
+
+    function addQuestion() {
+      const q = defaultQuestion();
+      state.questions.unshift(q);
+      state.selectedId = q.id;
+      save();
+      render();
+    }
+
+    function selectQuestion(id) {
+      state.selectedId = id;
+      save();
+      render();
+    }
+
+    function updateSelected(patch) {
+      const q = selectedQuestion();
+      if (!q) return;
+      if (patch.category) {
+        const topics = topicData[patch.category] || [];
+        patch.topic = topics[0] || "";
+      }
+      Object.assign(q, patch);
+      if (q.type !== "multiple_choice") q.multipleAnswer = false;
+      save();
+      render();
+    }
+
+    function addChoice() {
+      const q = selectedQuestion();
+      if (!q || q.type !== "multiple_choice") return;
+      q.choices.push({ id: uid(), text: "", correct: false });
+      save();
+      render();
+    }
+
+    function removeChoice(id) {
+      const q = selectedQuestion();
+      if (!q || q.type !== "multiple_choice") return;
+      q.choices = q.choices.filter((choice) => choice.id !== id);
+      save();
+      render();
+    }
+
+    function updateChoice(id, patch) {
+      const q = selectedQuestion();
+      if (!q || q.type !== "multiple_choice") return;
+      const choice = q.choices.find((item) => item.id === id);
+      if (!choice) return;
+      if (Object.prototype.hasOwnProperty.call(patch, "correct") && patch.correct && !q.multipleAnswer) {
+        q.choices.forEach((item) => { item.correct = false; });
+      }
+      Object.assign(choice, patch);
+      save();
+      if (!Object.prototype.hasOwnProperty.call(patch, "text")) {
+        render();
+      }
+    }
+
+    function renderQuestionList() {
+      refs.questionCount.textContent = String(state.questions.length);
+      refs.questionList.innerHTML = "";
+      if (state.questions.length === 0) {
+        refs.questionList.innerHTML = "<li class='empty-item'>No questions yet.</li>";
+        return;
+      }
+      state.questions.forEach((q, index) => {
+        const li = document.createElement("li");
+        li.className = `question-item ${q.id === state.selectedId ? "active" : ""}`;
+        const displayTitle = q.title.trim() || q.topic.trim() || q.category.trim() || `Question ${index + 1}`;
+        li.innerHTML = `
+          <button type="button" class="question-select" data-id="${q.id}">
+            <span class="question-order">${index + 1}</span>
+            <span class="question-title">${displayTitle}</span>
+            <span class="question-menu">...</span>
+          </button>
+          <button type="button" class="question-delete" data-delete-id="${q.id}" title="Delete question">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/trash.svg" alt="Delete question" />
+          </button>
+        `;
+        refs.questionList.appendChild(li);
+      });
+    }
+
+    function removeQuestion(id) {
+      const existingSize = state.questions.length;
+      state.questions = state.questions.filter((q) => q.id !== id);
+      if (state.selectedId === id) {
+        state.selectedId = state.questions.length > 0 ? state.questions[0].id : null;
+      }
+      if (state.questions.length !== existingSize) {
+        save();
+        render();
+      }
+    }
+
+    function renderTopicOptions(categoryKey, selectedTopic) {
+      const topics = topicData[categoryKey] || [];
+      refs.topicSelect.innerHTML = "";
+      topics.forEach((topic) => {
+        const option = document.createElement("option");
+        option.value = topic;
+        option.textContent = topic;
+        option.selected = topic === selectedTopic;
+        refs.topicSelect.appendChild(option);
+      });
+      if (!topics.includes(selectedTopic)) {
+        const fallback = document.createElement("option");
+        fallback.value = selectedTopic || "";
+        fallback.textContent = selectedTopic || "Select topic";
+        fallback.selected = true;
+        refs.topicSelect.prepend(fallback);
+      }
+    }
+
+    function renderEditor() {
+      const q = selectedQuestion();
+      const disabled = !q;
+      refs.categorySelect.disabled = disabled;
+      refs.topicSelect.disabled = disabled;
+      refs.typeSelect.disabled = disabled;
+      refs.requiredToggle.disabled = disabled;
+      refs.questionText.disabled = disabled;
+      refs.multiAnswerToggle.disabled = disabled || (q && q.type !== "multiple_choice");
+      refs.addChoiceBtn.disabled = disabled || (q && q.type !== "multiple_choice");
+
+      if (!q) {
+        refs.categorySelect.value = "gened";
+        renderTopicOptions("gened", "");
+        refs.typeSelect.value = "multiple_choice";
+        refs.requiredToggle.checked = true;
+        refs.questionText.value = "";
+        refs.multiAnswerToggle.checked = false;
+        refs.choicesList.innerHTML = "<li class='empty-item'>Create a question to start.</li>";
+        return;
+      }
+
+      refs.categorySelect.value = q.category;
+      renderTopicOptions(q.category, q.topic);
+      refs.typeSelect.value = q.type;
+      refs.requiredToggle.checked = q.required;
+      refs.questionText.value = q.title;
+      refs.multiAnswerToggle.checked = q.multipleAnswer;
+
+      refs.choicesList.innerHTML = "";
+      if (q.type !== "multiple_choice") {
+        refs.choicesList.innerHTML = "<li class='empty-item'>Choices are only available for multiple choice.</li>";
+        return;
+      }
+
+      if (q.choices.length === 0) {
+        refs.choicesList.innerHTML = "<li class='empty-item'>No choices yet.</li>";
+        return;
+      }
+
+      q.choices.forEach((choice) => {
+        const li = document.createElement("li");
+        li.className = "choice-row";
+        li.innerHTML = `
+          <label class="circle-check">
+            <input type="checkbox" data-correct-id="${choice.id}" ${choice.correct ? "checked" : ""} />
+            <span></span>
+          </label>
+          <input type="text" value="${choice.text.replace(/"/g, "&quot;")}" data-choice-id="${choice.id}" placeholder="Enter answer choice" />
+          <button type="button" class="trash-btn" data-remove-id="${choice.id}">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/trash.svg" alt="Remove choice" />
+          </button>
+        `;
+        refs.choicesList.appendChild(li);
+      });
+    }
+
+    function render() {
+      renderQuestionList();
+      renderEditor();
+    }
+
+    function publishQuestions() {
+      const questions = state.questions.map((q) => ({
+        id: q.id,
+        title: q.title,
+        category: q.category,
+        topic: q.topic,
+        type: q.type,
+        required: q.required ? 1 : 0,
+        multipleAnswer: q.multipleAnswer ? 1 : 0,
+        choices: q.choices || []
+      }));
+
+      if (questions.length === 0) {
+        refs.publishStatus.textContent = "No questions to publish.";
+        return;
+      }
+
+      localStorage.setItem(DATABASE_KEY, JSON.stringify({
+        savedAt: new Date().toISOString(),
+        questions
+      }));
+
+      refs.publishStatus.textContent = `Published ${questions.length} question${questions.length === 1 ? "" : "s"} to the JavaScript backend.`;
+    }
+
+    refs.addQuestionBtn.addEventListener("click", addQuestion);
+    refs.questionList.addEventListener("click", (event) => {
+      const deleteButton = event.target.closest("button[data-delete-id]");
+      if (deleteButton) {
+        event.stopPropagation();
+        removeQuestion(deleteButton.dataset.deleteId);
+        return;
+      }
+      const button = event.target.closest(".question-select");
+      if (!button) return;
+      selectQuestion(button.dataset.id);
+    });
+    refs.categorySelect.addEventListener("change", (event) => updateSelected({ category: event.target.value }));
+    refs.topicSelect.addEventListener("change", (event) => updateSelected({ topic: event.target.value }));
+    refs.typeSelect.addEventListener("change", (event) => updateSelected({ type: event.target.value }));
+    refs.requiredToggle.addEventListener("change", (event) => updateSelected({ required: event.target.checked }));
+    refs.questionText.addEventListener("input", (event) => updateSelected({ title: event.target.value }));
+    refs.multiAnswerToggle.addEventListener("change", (event) => updateSelected({ multipleAnswer: event.target.checked }));
+    refs.addChoiceBtn.addEventListener("click", addChoice);
+    refs.publishBtn.addEventListener("click", publishQuestions);
+
+    refs.choicesList.addEventListener("input", (event) => {
+      const input = event.target.closest("input[data-choice-id]");
+      if (!input) return;
+      updateChoice(input.dataset.choiceId, { text: input.value });
+    });
+
+    refs.choicesList.addEventListener("change", (event) => {
+      const input = event.target.closest("input[data-correct-id]");
+      if (!input) return;
+      updateChoice(input.dataset.correctId, { correct: input.checked });
+    });
+
+    refs.choicesList.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-remove-id]");
+      if (!button) return;
+      removeChoice(button.dataset.removeId);
+    });
+
+    load();
+    if (state.questions.length === 0) {
+      addQuestion();
+    } else {
+      render();
+    }
+  </script>
+</body>
+</html>

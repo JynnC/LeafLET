@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafLET Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../assets/css/admin-user-profile.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="./images/LOGO1.png" alt="LeafLET logo" />
+        </div>
+        <span class="label"></span>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item active" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/house-door-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Dashboard</span>
+        </a>
+        <a class="menu-item" href="admin-qm.html">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/question-circle-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Questions</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/folder-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Categories</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/mortarboard-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Students</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header-row">
+        <h1>Edit Profile</h1>
+        <div class="profile-chip">
+          <div class="profile-meta">
+            <strong>Ace B. Ningo</strong>
+            <small>Administrator</small>
+          </div>
+          <div class="avatar" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <div class="profile-container">
+        <!-- Left Side: Profile Section -->
+        <aside class="profile-sidebar">
+          <div class="profile-card">
+            <div class="profile-avatar-large">
+              <img src="./images/profile-pic.jpg" alt="Profile picture" />
+            </div>
+            <h2 class="profile-name">Ace Smith</h2>
+            <p class="profile-role">Instructor</p>
+          </div>
+
+          <nav class="profile-menu">
+            <a class="profile-menu-item active" href="#personal">
+              <span class="profile-menu-icon placeholder-icon"></span>
+              <span>Personal Information</span>
+            </a>
+            <a class="profile-menu-item" href="admin-user-profile-Changepass.html">
+              <span class="profile-menu-icon placeholder-icon"></span>
+              <span>Change Password</span>
+            </a>
+          </nav>
+        </aside>
+
+        <section class="profile-form-section">
+          <form class="profile-form" id="personal">
+            <h3 class="form-title">Personal Information</h3>
+
+            <div class="form-group gender-group">
+              <label>Gender</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="gender" value="male" checked />
+                  <span>Male</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="gender" value="female" />
+                  <span>Female</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" />
+              </div>
+              <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" id="middleName" name="middleName" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="postal">Postal Code</label>
+                <input type="text" id="postal" name="postal" />
+              </div>
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary">Discard Changes</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

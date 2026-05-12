@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeafLET - Register</title>
+    <link rel="stylesheet" href="../assets/css/admin-register-Instructor.css">
+</head>
+<body>
+
+    <main class="canvas">
+        <div class="register-card">
+            <div class="left-panel">
+                <img src="logo.png" alt="LeafLET Logo" class="main-logo">
+                <h1 class="brand-name">LeafLET</h1>
+                <p class="slogan">Empower Instructors.<br>Guide Learners</p>
+            </div>
+
+            <div class="right-panel">
+                <h2 class="welcome-text">Welcome to LeafLET!</h2>
+                
+                <div class="tabs">
+                    <div class="tab instructor-tab active">Instructor</div>
+                    <div class="tab student-tab" onclick="window.location.href='admin-register-student.html'">Student</div>
+                </div>
+
+                <form>
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Teacher ID</label>
+                        <input type="text" placeholder="">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" placeholder="">
+                            <img src="hide.png" class="toggle-password" alt="hide">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-register">Register</button>
+                    <button type="button" class="btn-signin-outline">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

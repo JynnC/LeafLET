@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafLET Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../assets/css/admin-dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="./images/LOGO1.png" alt="LeafLET logo" />
+        </div>
+        <span class="label"></span>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item active" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/house-door-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Dashboard</span>
+        </a>
+        <a class="menu-item" href="admin-qm.html">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/question-circle-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Questions</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/folder-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Categories</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/mortarboard-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Students</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header-row">
+        <h1>Dashboard</h1>
+        <div class="profile-chip">
+          <div class="profile-meta">
+            <strong></strong>
+            <small></small>
+          </div>
+          <div class="avatar" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <section class="hero-panel">
+        <h2></h2>
+        <p></p>
+      </section>
+
+      <section class="notice-row">
+        <div class="notice-left">
+          <div class="dot" aria-hidden="true"></div>
+          <div>
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+        <button type="button" class="primary-btn"></button>
+      </section>
+
+      <section class="stats-grid" aria-label="Summary cards">
+        <article class="stat-card">
+          <div class="stat-icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/file-earmark-text-fill.svg" alt="" aria-hidden="true" />
+          </div>
+          <h4>Total Questions</h4>
+          <p></p>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/people-fill.svg" alt="" aria-hidden="true" />
+          </div>
+          <h4>Active Students</h4>
+          <p></p>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/bar-chart-fill.svg" alt="" aria-hidden="true" />
+          </div>
+          <h4>Average Score</h4>
+          <p></p>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/clipboard-check-fill.svg" alt="" aria-hidden="true" />
+          </div>
+          <h4>Quiz Attempts</h4>
+          <p></p>
+        </article>
+      </section>
+
+      <section class="insight-grid">
+        <article class="panel wide-panel">
+          <div class="panel-head">
+            <h3>Average Score Per Category</h3>
+            <a href="#" class="panel-link">View All</a>
+          </div>
+          <div class="empty-block">No data available yet.</div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h3>Recent Activity</h3>
+            <a href="#" class="panel-link">See All</a>
+          </div>
+          <div class="empty-block">No activity yet.</div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Top Students This Week</h3>
+          <a href="#" class="panel-link">View All</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Category</th>
+                <th>Attempts</th>
+                <th>Average Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4" class="empty-row">No data available yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

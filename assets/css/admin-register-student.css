@@ -1,0 +1,283 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+}
+
+.canvas {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0%, #a5be8f 45%, #1e3d07 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.register-card {
+    background-color: #fffefc;
+    width: 95%;
+    max-width: 950px;
+    min-height: 600px;
+    display: flex;
+    border-radius: 35px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+}
+
+/* LEFT PANEL (Branding) */
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.main-logo {
+    width: 140px;
+    margin-bottom: 20px;
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e3d07;
+    margin-bottom: 30px;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+}
+
+.slogan {
+    font-size: 14px;
+    color: #000;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+    font-style: normal;
+}
+
+.right-panel {
+    flex: 1.2;
+    background-color: #fffefc;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: -20px 0 30px rgba(0, 0, 0, 0.10); 
+}
+
+.welcome-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e3d07;
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    border-bottom: 3px solid #497B1D;
+    margin-bottom: 25px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #1e3d07;
+    border-bottom: none;
+    transition: 0.2s;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+}
+
+.tab.active {
+    background-color: #497B1D;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.instructor-tab {
+    color: #1e3d07;
+}
+
+.student-tab.active {
+    background-color: #497B1D;
+    color: #fff;
+    border-radius: 0px 10px 0 0;
+}
+
+/* FORM STYLING */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #000;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+    font-style: normal;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: 0.2s;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+}
+
+input:focus {
+    border-color: #497B1D;
+    box-shadow: 0 4px 12px rgba(73, 123, 29, 0.15);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/* BUTTONS */
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+    font-family: 'Poppins', 'Century Gothic', sans-serif;
+}
+
+.btn-register {
+    background-color: #497B1D;
+    color: white;
+    border: none;
+}
+
+.btn-signin-outline {
+    background-color: transparent;
+    border: 1.5px solid #497B1D;
+    color: #497B1D;
+}
+
+@media (max-width: 1400px) {
+    .right-panel {
+        padding: 40px 50px;
+    }
+    .welcome-text {
+        font-size: 18px;
+    }
+    .input-group label {
+        font-size: 11px;
+    }
+    input {
+        padding: 11px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .register-card {
+        max-width: 850px;
+        min-height: 550px;
+    }
+    .right-panel {
+        padding: 40px 40px;
+    }
+    .left-panel {
+        padding: 30px;
+    }
+    .main-logo {
+        width: 120px;
+    }
+    .brand-name {
+        font-size: 22px;
+    }
+    .slogan {
+        font-size: 13px;
+    }
+    .welcome-text {
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+    button {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .register-card {
+        max-width: 750px;
+        min-height: 500px;
+    }
+    .right-panel {
+        padding: 35px 35px;
+    }
+    .left-panel {
+        padding: 25px;
+    }
+    .main-logo {
+        width: 110px;
+        margin-bottom: 15px;
+    }
+    .brand-name {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .slogan {
+        font-size: 12px;
+    }
+    .welcome-text {
+        font-size: 16px;
+    }
+    .input-group {
+        margin-bottom: 14px;
+    }
+    input {
+        padding: 10px;
+        font-size: 12px;
+    }
+    button {
+        padding: 11px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 912px) {
+    .register-card {
+        max-width: 85%;
+        min-height: 480px;
+    }
+    .right-panel {
+        padding: 30px 30px;
+    }
+}

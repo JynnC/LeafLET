@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafLET Admin Dashboard - Change Password</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../assets/css/admin-user-profile-changepass.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="./images/LOGO1.png" alt="LeafLET logo" />
+        </div>
+        <span class="label"></span>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item active" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/house-door-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Dashboard</span>
+        </a>
+        <a class="menu-item" href="admin-qm.html">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/question-circle-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Questions</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/folder-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Categories</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="icon">
+            <img src="./icons/bootstrap-icons-1.13.1/bootstrap-icons-1.13.1/mortarboard-fill.svg" alt="" aria-hidden="true" />
+          </span>
+          <span class="label">Students</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header-row">
+        <h1>Edit Profile</h1>
+        <div class="profile-chip">
+          <div class="profile-meta">
+            <strong>Ace B. Ningo</strong>
+            <small>Administrator</small>
+          </div>
+          <div class="avatar" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <div class="profile-container">
+        <aside class="profile-sidebar">
+          <div class="profile-card">
+            <div class="profile-avatar-large">
+              <img src="./images/profile-pic.jpg" alt="Profile picture" />
+            </div>
+            <h2 class="profile-name">Ace Smith</h2>
+            <p class="profile-role">Instructor</p>
+          </div>
+
+          <nav class="profile-menu">
+            <a class="profile-menu-item" href="admin-user-profile.html">
+              <span class="profile-menu-icon placeholder-icon"></span>
+              <span>Personal Information</span>
+            </a>
+            <a class="profile-menu-item active" href="admin-user-profile-changepass.html">
+              <span class="profile-menu-icon placeholder-icon"></span>
+              <span>Change Password</span>
+            </a>
+          </nav>
+        </aside>
+
+        <section class="profile-form-section">
+          <form class="profile-form" id="password">
+            <h3 class="form-title">Change Password</h3>
+
+            <div class="form-group">
+              <label for="currentPassword">Current Password</label>
+              <div class="input-wrapper">
+                <input type="password" id="currentPassword" name="currentPassword" />
+                <span class="input-icon-placeholder"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="newPassword">New Password</label>
+              <div class="input-wrapper">
+                <input type="password" id="newPassword" name="newPassword" />
+                <span class="input-icon-placeholder"></span>
+              </div>
+            </div>
+
+            <div class="password-requirements">
+              <p>Your password must contain:</p>
+              <ul>
+                <li><span class="bullet"></span> A minimum of 8 characters</li>
+                <li><span class="bullet"></span> At least one number</li>
+                <li><span class="bullet"></span> At least one uppercase letter</li>
+                <li><span class="bullet"></span> At least one special character</li>
+              </ul>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Confirm New Password</label>
+              <div class="input-wrapper">
+                <input type="password" id="confirmPassword" name="confirmPassword" />
+                <span class="input-icon-placeholder"></span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary">Discard Changes</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
