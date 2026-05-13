@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>LeafLET Onboarding</title>
+  <style>
+    :root {
+      --bg: #f3f5ef;
+      --title: #214d16;
+      --muted: #2f2f2f;
+      --green: #5d8e33;
+      --green-dark: #477422;
+      --dot: #c5ccb9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: #111;
+      overflow: hidden;
+    }
+
+    .screen {
+      width: 100vw;
+      height: 100dvh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: calc(18px + env(safe-area-inset-top)) 24px calc(14px + env(safe-area-inset-bottom));
+    }
+
+    .content {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .top {
+      text-align: center;
+      max-width: 330px;
+      margin-top: 0;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--title);
+      font-size: clamp(36px, 7.6vw, 44px);
+      line-height: 1.14;
+      font-weight: 800;
+      letter-spacing: 0.1px;
+    }
+
+    .sub {
+      margin: 14px auto 0;
+      max-width: 290px;
+      color: var(--muted);
+      font-size: clamp(13px, 3.4vw, 16px);
+      line-height: 1.35;
+    }
+
+    .art {
+      width: min(84vw, 320px);
+      aspect-ratio: 1.24 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: clamp(10px, 2.8vh, 20px) 0 0;
+    }
+
+    .art-image {
+      width: 78%;
+      max-width: 220px;
+      height: auto;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .bottom {
+      width: min(100%, 360px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding-top: 8px;
+    }
+
+    .dots {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 1.5px solid var(--dot);
+      background: transparent;
+    }
+
+    .dot.active {
+      border-color: var(--green);
+      background: var(--green);
+    }
+
+    .next-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      height: 42px;
+      background: linear-gradient(to bottom, var(--green) 0%, var(--green-dark) 100%);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      transition: transform 0.16s ease, opacity 0.16s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .next-btn:active {
+      transform: scale(0.992);
+    }
+
+    .next-btn:hover {
+      opacity: 0.96;
+    }
+  </style>
+</head>
+<body>
+  <main class="screen" aria-label="Onboarding slides">
+    <section class="content">
+      <section class="top">
+        <h1 id="slideTitle">Study Anytime,<br />Anywhere</h1>
+        <p class="sub" id="slideSubtitle">Access your reviewer materials even without internet connection</p>
+      </section>
+
+      <section class="art" aria-hidden="true">
+        <img class="art-image" id="slideImage" src="./LOGO.png" alt="" />
+      </section>
+    </section>
+
+    <section class="bottom">
+      <div class="dots" aria-label="Onboarding progress">
+        <span class="dot active" data-dot="0"></span>
+        <span class="dot" data-dot="1"></span>
+        <span class="dot" data-dot="2"></span>
+      </div>
+      <button class="next-btn" id="nextSlideBtn">Next</button>
+    </section>
+  </main>
+
+  <script>
+    const slides = [
+      {
+        title: "Study Anytime,<br />Anywhere",
+        subtitle: "Access your reviewer materials even without internet connection",
+        image: "./LOGO.png"
+      },
+      {
+        title: "Challenge your<br />self daily",
+        subtitle: "Practice with a lot of questions from previous LET examinations",
+        image: "./LOGO.png"
+      },
+      {
+        title: "Track your<br />progress",
+        subtitle: "Monitor your improvements and identify areas that need more focus.",
+        image: "./LOGO.png"
+      }
+    ];
+
+    let currentSlide = 0;
+
+    const titleEl = document.getElementById("slideTitle");
+    const subtitleEl = document.getElementById("slideSubtitle");
+    const imageEl = document.getElementById("slideImage");
+    const dots = Array.from(document.querySelectorAll(".dot"));
+    const nextBtn = document.getElementById("nextSlideBtn");
+
+    function renderSlide(index) {
+      const slide = slides[index];
+      titleEl.innerHTML = slide.title;
+      subtitleEl.textContent = slide.subtitle;
+      imageEl.src = slide.image;
+      nextBtn.textContent = index === slides.length - 1 ? "Finish" : "Next";
+
+      dots.forEach(function (dot, dotIndex) {
+        dot.classList.toggle("active", dotIndex === index);
+      });
+    }
+
+    function handleNext() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide += 1;
+        renderSlide(currentSlide);
+      } else {
+        console.log("Onboarding finished");
+      }
+    }
+
+    nextBtn.addEventListener("click", handleNext);
+    nextBtn.addEventListener("touchend", function (event) {
+      event.preventDefault();
+      handleNext();
+    }, { passive: false });
+  </script>
+</body>
+</html>

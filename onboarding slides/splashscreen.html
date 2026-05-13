@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>LeafLET Splash</title>
+  <style>
+    :root {
+      --bg-top: #d4decd;
+      --bg-bottom: #336f0f;
+      --white: #ffffff;
+      --ink: #12350d;
+      --icon: #5f8d3e;
+      --icon-dark: #3d5f2c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .phone-splash {
+      width: 100vw;
+      min-height: 100dvh;
+      position: relative;
+      background: linear-gradient(to bottom, var(--bg-top) 0%, #a8bf97 20%, #6f9d45 50%, var(--bg-bottom) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      padding: 24px 22px calc(32px + env(safe-area-inset-bottom));
+      isolation: isolate;
+    }
+
+    .center-wrap {
+      transform: translateY(-42px);
+      text-align: center;
+      user-select: none;
+    }
+
+    .logo-mark {
+      width: 82px;
+      height: auto;
+      margin-inline: auto;
+      display: block;
+      filter: drop-shadow(0 8px 20px rgba(16, 39, 10, 0.2));
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    h1 {
+      margin: 14px 0 8px;
+      font-size: clamp(30px, 8vw, 37px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.2px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .tagline {
+      margin: 0;
+      font-size: clamp(12px, 3.2vw, 14px);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+      opacity: 0.96;
+    }
+
+    .next-btn {
+      position: absolute;
+      bottom: calc(26px + env(safe-area-inset-bottom));
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(8, 21, 6, 0.25);
+      transition: transform 0.16s ease, background-color 0.16s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .next-btn:active {
+      transform: scale(0.94);
+    }
+
+    .next-btn:hover {
+      background: #ffffff;
+    }
+
+    .next-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+  </style>
+</head>
+<body>
+  <main class="phone-splash" aria-label="Splash screen">
+    <section class="center-wrap">
+      <img class="logo-mark" src="./LOGO.png" alt="LeafLET logo" />
+      <h1>LeafLET</h1>
+      <p class="tagline">Study Smart. Pass the LET</p>
+    </section>
+
+    <a class="next-btn" id="nextBtn" href="./onboardingslides.html" aria-label="Continue">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 12h14"></path>
+        <path d="m13 6 6 6-6 6"></path>
+      </svg>
+    </a>
+  </main>
+</body>
+</html>
