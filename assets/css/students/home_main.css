@@ -1,0 +1,334 @@
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#1d1d1d;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    /* PHONE FRAME */
+    .phone{
+      width:320px;
+      height:640px;
+      background:#F5F6EE;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    /* CONTENT */
+    .content{
+      padding:10px 10px 72px;
+      height:100%;
+      overflow:hidden;
+    }
+
+    /* TOP BAR */
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+    }
+
+    .logo-placeholder{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      background:#C7D6B3;
+      flex-shrink:0;
+    }
+
+    .brand-text h1{
+      font-size:18px;
+      color:#3F6B18;
+      line-height:1;
+      font-weight:700;
+      margin:0;
+      padding:0;
+    }
+
+    .brand-text span{
+      display:block;
+      margin-top:-1px;
+      font-size:8px;
+      color:#777;
+      letter-spacing:1px;
+      line-height:1;
+    }
+
+   .top-icons{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:4px;
+    }
+   .logo-placeholder{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      background:#C7D6B3;
+      flex-shrink:0;
+    }
+
+    .profile{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:#d8d8d8;
+      border:2px solid #fff;
+    }
+
+    /* WELCOME */
+    .welcome{
+      margin-bottom:10px;
+    }
+
+    .welcome h2{
+      font-size:16px;
+      color:#1E3D07;
+      font-weight:700;
+      line-height:1;
+      margin:0;
+    }
+
+    .welcome p{
+      font-size:8px;
+      color:#666;
+      margin-top:2px;
+      line-height:1.2;
+    }
+
+    /* SUBJECT CARDS */
+    .subject-container{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .subject-card{
+      background:#DDE7CC;
+      border:1px solid #A9BF8B;
+      border-radius:12px;
+      padding:9px;
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      box-shadow:0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .subject-icon{
+      width:32px;
+      height:32px;
+      border-radius:8px;
+      background:#4E7B22;
+      flex-shrink:0;
+    }
+
+    .subject-details{
+      flex:1;
+    }
+
+    .subject-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:4px;
+    }
+
+    .subject-top h3{
+      font-size:10px;
+      color:#345B12;
+      font-weight:700;
+    }
+
+    .score{
+      background:#F4F7EF;
+      border:1px solid #B6C89D;
+      border-radius:5px;
+      padding:1px 5px;
+      font-size:7px;
+      color:#4B4B4B;
+      font-weight:600;
+    }
+
+    .subject-details p{
+      font-size:7px;
+      color:#666;
+      line-height:1.3;
+      margin-bottom:5px;
+    }
+
+    /* PROGRESS BAR */
+    .progress-text{
+      display:flex;
+      justify-content:space-between;
+      font-size:7px;
+      color:#666;
+      margin-bottom:3px;
+    }
+
+    .progress-bar{
+      width:100%;
+      height:5px;
+      background:#C5D2B3;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .progress{
+      height:100%;
+      border-radius:20px;
+      background:#4B7A1F;
+    }
+
+    /* SECTION TITLE */
+    .section-title{
+      font-size:11px;
+      color:#355D12;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    /* STUDY MODES */
+    .study-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .study-card{
+      background:#fff;
+      border-radius:12px;
+      padding:9px;
+      min-height:82px;
+      border:1px solid #E4E4E4;
+      box-shadow:0 2px 6px rgba(0,0,0,0.04);
+      transition:0.25s ease;
+    }
+
+    .study-card:hover{
+      transform:translateY(-2px);
+    }
+
+    .study-card.active{
+      background:#4B7A1F;
+      border:none;
+    }
+
+    .study-icon{
+      width:16px;
+      height:16px;
+      border-radius:5px;
+      margin-bottom:7px;
+      background:#4B7A1F;
+    }
+
+    .study-card.active .study-icon{
+      background:#fff;
+    }
+
+    .study-card h4{
+      font-size:9px;
+      font-weight:700;
+      color:#355D12;
+      margin-bottom:3px;
+    }
+
+    .study-card p{
+      font-size:6.5px;
+      line-height:1.3;
+      color:#777;
+    }
+
+    .study-card.active h4,
+    .study-card.active p{
+      color:#fff;
+    }
+
+    .nav{
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      height:62px;
+      background:#264B0D;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      padding:0 12px;
+    }
+
+    .nav-item{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      transition:0.2s ease;
+    }
+
+    .nav-item.active{
+      background:rgba(255,255,255,0.12);
+    }
+
+    .nav img{
+      width:20px;
+      height:20px;
+      object-fit:contain;
+    }
+
+    .game-btn{
+      width:56px;
+      height:56px;
+      margin-top:-24px;
+      border-radius:50%;
+      background:#4B7A1F;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      border:4px solid #F5F6EE;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .game-btn img{
+      width:58px;
+      height:58px;
+    }
+
+    .game-icon{
+  width:70px !important;
+  height:70px !important;
+  margin-top:-24px;
+}
+
+.profile-icon{
+      width:24px !important;
+      height:20px !important;
+    }
+  
+    .files-icon{
+      width:24px !important;
+      height:20px !important;
+    }
+     .task-icon{
+    width: 33px !important;
+    height:33px !important;
+}
