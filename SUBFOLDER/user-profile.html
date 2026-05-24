@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>LeafLET Profile UI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/students/user-profile.css" />
+
+
+</head>
+
+<body>
+
+<div class="phone">
+
+  <div class="content">
+
+    <!-- TOP HEADER -->
+
+    <div class="top-bar">
+
+      <div class="brand">
+
+        <div class="logo-placeholder">
+          <img src="logo.png" alt="Logo">
+        </div>
+
+        <div class="brand-text">
+          <h1>LeafLET</h1>
+          <span>LET REVIEWER</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+      <div class="back-btn" onclick="goBack()">
+        ‹
+      </div>
+
+      <div class="page-title">
+        My Profile
+      </div>
+
+    </div>
+
+    <!-- PROFILE PHOTO -->
+
+    <div class="profile-wrapper">
+
+      <div class="profile-container">
+
+        <img
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=500&auto=format&fit=crop"
+          class="profile-image"
+          id="profilePreview"
+        >
+
+        <div class="add-btn" onclick="uploadPhoto()">
+          +
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- BASIC DETAILS -->
+
+    <div class="section">
+
+      <div class="section-title">
+        Basic Detail
+      </div>
+
+      <div class="input-group">
+
+        <label>Full name</label>
+
+        <input
+          type="text"
+          class="input-field"
+          value="Maria Leonora Teresa"
+        >
+
+      </div>
+
+      <!-- DATE OF BIRTH -->
+
+      <div class="input-group">
+
+        <label>Date of birth</label>
+
+        <div class="date-wrapper">
+
+          <input
+            type="text"
+            class="input-field"
+            value="September 11, 2001"
+          >
+
+          <img
+            src="Calendar.png"
+            alt="Calendar Icon"
+            class="calendar-icon"
+          >
+
+        </div>
+
+      </div>
+
+      <!-- GENDER -->
+
+      <div class="input-group">
+
+        <label>Gender</label>
+
+        <div class="gender-row">
+
+          <div class="gender-card" onclick="selectGender(this)">
+
+            <div class="radio">
+              <div class="radio-fill"></div>
+            </div>
+
+            <span>Male</span>
+
+          </div>
+
+          <div class="gender-card active" onclick="selectGender(this)">
+
+            <div class="radio">
+              <div class="radio-fill"></div>
+            </div>
+
+            <span>Female</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CONTACT DETAILS -->
+
+    <div class="section">
+
+      <div class="section-title">
+        Contact Detail
+      </div>
+
+      <div class="input-group">
+
+        <label>Mobile Number</label>
+
+        <input
+          type="text"
+          class="input-field"
+          value="+0912 345 6789"
+        >
+
+      </div>
+
+      <div class="input-group">
+
+        <label>Email</label>
+
+        <input
+          type="email"
+          class="input-field"
+          value="MariaLeonoraTeresa@example.com"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- BUTTONS -->
+
+  <div class="bottom-buttons">
+
+    <button class="btn btn-outline">
+      Discard changes
+    </button>
+
+    <button class="btn btn-primary" onclick="saveProfile()">
+      Save changes
+    </button>
+
+  </div>
+
+  <!-- NAVIGATION -->
+
+  <div class="nav">
+
+    <img src="home.png" class="home-icon" alt="Home">
+
+    <img src="tasks.png" class="task-icon" alt="Tasks">
+
+    <img src="game.png" class="game-icon" alt="Game">
+
+    <img src="files.png" class="files-icon" alt="Files">
+
+    <img src="profile.png" class="profile-icon" alt="Profile">
+
+  </div>
+
+</div>
+
+<script>
+
+/* GENDER SELECT */
+
+function selectGender(selectedCard){
+
+  const cards = document.querySelectorAll('.gender-card');
+
+  cards.forEach(card => {
+    card.classList.remove('active');
+  });
+
+  selectedCard.classList.add('active');
+}
+
+/* SAVE BUTTON */
+
+function saveProfile(){
+  alert("Profile changes saved!");
+}
+
+/* BACK BUTTON */
+
+function goBack(){
+  alert("Going back...");
+}
+
+/* UPLOAD PHOTO */
+
+function uploadPhoto(){
+  alert("Upload new profile photo");
+}
+
+</script>
+
+</body>
+</html>
